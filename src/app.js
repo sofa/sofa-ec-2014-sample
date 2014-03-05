@@ -1,1 +1,4 @@
-/*just an empty JavaScript file*/
+angular.module('sample', [
+    'sdk.services.couchService',
+    'sdk.services.basketService'
+]);

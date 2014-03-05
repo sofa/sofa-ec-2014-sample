@@ -3,7 +3,7 @@ angular.module('sample', [
     'sdk.services.basketService',
     'sdk.filter'
 ])
-.controller('appController', function($scope, couchService){
+.controller('appController', function($scope, couchService, basketService){
 
     var states = {
         CATEGORIES: 0,
@@ -13,6 +13,15 @@ angular.module('sample', [
 
     $scope.states = states;
     $scope.state = states.CATEGORIES;
+
+    $scope.itemCount = 0;
+
+    var updateItemCount = function(){
+        $scope.itemCount = basketService.getSummary().quantity;
+    };
+
+    updateItemCount();
+    basketService.on('itemAdded', updateItemCount);
 
     couchService
         .getCategory()
@@ -34,6 +43,18 @@ angular.module('sample', [
                 });
         }
     };
+
+    $scope.openProduct = function(product){
+        $scope.product = product;
+        $scope.state = states.PRODUCT;
+    };
+
+    $scope.addToBasket = function(product){
+        if (product){
+            basketService.addItem(product, 1);
+        }
+    };
+
 });
 
 

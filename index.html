@@ -10,6 +10,7 @@
     <body ng-app="sample" ng-controller="appController">
         <header class="ec-header">
             Sample app
+            <span ng-show="itemCount > 0" class="ec-badge">{{itemCount}}</span>
         </header>
 
         <section ng-show="state === states.CATEGORIES" class="ec-view">
@@ -26,13 +27,24 @@
             <ul>
                 <li class="ec-product-item" 
                     ng-repeat="product in products" 
-                    ng-click="goToProduct(product)">
+                    ng-click="openProduct(product)">
                     <div class="ec-product-item__image" 
                          style="background-image:url({{ product.getImage('small') }})">
                     </div>
                     <span class="ec-product-item__caption">{{product.name}} ({{product.price | currency}})</span>
                 </li>
             </ul>
+        </section>
+
+        <section ng-show="state === states.PRODUCT" class="ec-view">
+            <h1>{{product.name}}</h1>
+            <div class="ec-product__image" style="background-image:url({{ product.getImage('small') }})">
+            </div>
+            <div class="ec-container">
+                <button ng-click="addToBasket(product)" 
+                        class="ec-button">Kaufen ({{ product.price | currency }})
+                </button>
+            </div>
         </section>
 
         <script type="text/javascript" src="vendor/angular.js"></script>

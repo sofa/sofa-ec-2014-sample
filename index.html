@@ -12,12 +12,25 @@
             Sample app
         </header>
 
-        <section class="ec-view">
+        <section ng-show="state === states.CATEGORIES" class="ec-view">
             <ul>
                 <li class="ec-category" 
                     ng-repeat="childCategory in category.children"
                     ng-click="goDeeper(childCategory)">
                     {{childCategory.label}}
+                </li>
+            </ul>
+        </section>
+
+        <section ng-show="state === states.PRODUCTS" class="ec-view">
+            <ul>
+                <li class="ec-product-item" 
+                    ng-repeat="product in products" 
+                    ng-click="goToProduct(product)">
+                    <div class="ec-product-item__image" 
+                         style="background-image:url({{ product.getImage('small') }})">
+                    </div>
+                    <span class="ec-product-item__caption">{{product.name}} ({{product.price | currency}})</span>
                 </li>
             </ul>
         </section>

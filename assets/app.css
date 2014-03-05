@@ -54,3 +54,26 @@ table { width:auto; border-collapse: collapse;border-spacing: 0; }
     padding: 20px;
     color: #193236;
 }
+
+.ec-product-item{
+    border-bottom: 1px solid #d1d1d1;
+    color: #193236;
+    line-height: 75px;
+    position: relative;
+}
+
+.ec-product-item__image{
+    display: inline-block;
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.ec-product-item__caption{
+    padding-left: 60px;
+}

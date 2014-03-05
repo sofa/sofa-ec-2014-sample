@@ -7,10 +7,20 @@
         <title>CouchCommerce</title>
         <link rel="stylesheet" type="text/css" href="assets/app.css"/>
     </head>
-    <body ng-app="sample">
+    <body ng-app="sample" ng-controller="appController">
         <header class="ec-header">
             Sample app
         </header>
+
+        <section class="ec-view">
+            <ul>
+                <li class="ec-category" 
+                    ng-repeat="childCategory in category.children"
+                    ng-click="goDeeper(childCategory)">
+                    {{childCategory.label}}
+                </li>
+            </ul>
+        </section>
 
         <script type="text/javascript" src="vendor/angular.js"></script>
         <script type="text/javascript" src="node_modules/sofa-base/dist/cc.js"></script>

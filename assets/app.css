@@ -48,3 +48,9 @@ table { width:auto; border-collapse: collapse;border-spacing: 0; }
     color: #fff;
     text-shadow: 1px 1px 1px #333;
 }
+
+.ec-category{
+    border-bottom: 1px solid #d1d1d1;
+    padding: 20px;
+    color: #193236;
+}
